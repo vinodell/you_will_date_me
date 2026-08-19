@@ -24,5 +24,5 @@ export const buttonLabels = {
   startOver: "Начать заново",
 };
 
-export const webApi = "https://api.web3forms.com/submit";
+export const telegramApi = "https://worker.max-khamitov.workers.dev/send-date";
 export const WEB_ACCESS_KEY = import.meta.env.VITE_WEB_ACCESS_KEY;

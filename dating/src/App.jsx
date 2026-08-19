@@ -2,7 +2,12 @@ import { useState } from "react";
 import catGif from "./assets/cat.gif";
 import noGif from "./assets/noBtn.png";
 
-import { activities, buttonLabels, webApi, WEB_ACCESS_KEY } from "./const";
+import {
+  activities,
+  buttonLabels,
+  telegramApi,
+  WEB_ACCESS_KEY,
+} from "./const";
 import "./App.css";
 
 function App() {
@@ -28,42 +33,30 @@ function App() {
   };
 
   const dateReady = date && time;
-  
-  console.log('WEB_ACCESS_KEY', WEB_ACCESS_KEY);
 
-  const sendEmail = async () => {
+  console.log("WEB_ACCESS_KEY", WEB_ACCESS_KEY);
+
+  const sendTelegram = async () => {
     if (isSending) return;
-
     setIsSending(true);
-
     try {
-      const response = await fetch(webApi, {
+      const response = await fetch(telegramApi, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: WEB_ACCESS_KEY,
-          subject: "Новое свидание ❤️",
-
-          choice: activity.title,
+          activity: activity.title,
           details: activity.detail,
           date,
           time,
         }),
       });
-
       const result = await response.json();
-
-      if (result.success) {
-        setStep(4);
-      } else {
-        console.error(result);
-        setIsSending(false);
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Telegram send failed");
       }
+      setStep(4);
     } catch (error) {
-      console.error(error);
+      console.error("Ошибка отправки:", error);
       setIsSending(false);
     }
   };
@@ -205,8 +198,8 @@ function App() {
           <button
             className="button button-primary continue-button"
             type="button"
-            disabled={!dateReady}
-            onClick={sendEmail}
+            disabled={!dateReady || isSending}
+            onClick={sendTelegram}
           >
             Make it official <span>♥</span>
           </button>
