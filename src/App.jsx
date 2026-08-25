@@ -34,8 +34,6 @@ function App() {
 
   const dateReady = date && time;
 
-  console.log("WEB_ACCESS_KEY", WEB_ACCESS_KEY);
-
   const sendTelegram = async () => {
     if (isSending) return;
     setIsSending(true);
