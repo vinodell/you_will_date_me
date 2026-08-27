@@ -10,21 +10,6 @@ Before starting, make sure you have:
 * A Cloudflare account
 * Wrangler CLI
 
-## Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/vinodell/you_will_date_me.git
-cd you_will_date_me
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
 ## Local Development
 
 Start the Vite development server:
@@ -142,20 +127,6 @@ The Cloudflare Account ID can be found in the Cloudflare dashboard.
 
 Once configured, pushes to the deployment branch can automatically build and deploy the application.
 
-## Project Structure
-
-```text
-.
-├── public/             # Static assets
-├── src/                # React application
-├── worker/             # Cloudflare Worker
-├── .github/
-│   └── workflows/      # GitHub Actions
-├── index.html
-├── package.json
-├── vite.config.js
-└── wrangler.jsonc
-```
 
 ## Development Workflow
 
@@ -172,7 +143,3 @@ npm run build
 # Deploy to Cloudflare
 npx wrangler deploy
 ```
-
-## License
-
-This project is intended for personal and educational use.
