@@ -1,17 +1,14 @@
 import { useState } from "react";
 import catGif from "./assets/cat.gif";
 import noGif from "./assets/noBtn.png";
+import dateMeImg from "./assets/date_me.jpg";
 
-import {
-  activities,
-  buttonLabels,
-  telegramApi,
-  WEB_ACCESS_KEY,
-} from "./const";
+import { activities, buttonLabels, cities, telegramApi } from "./const";
 import "./App.css";
 
 function App() {
   const [activity, setActivity] = useState(activities[1]);
+  const [city, setCity] = useState(cities[0]);
   const [date, setDate] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [noBtnHover, setNoBtnHover] = useState(false);
@@ -44,6 +41,7 @@ function App() {
         body: JSON.stringify({
           activity: activity.title,
           details: activity.detail,
+          city: city.title,
           date,
           time,
         }),
@@ -52,7 +50,7 @@ function App() {
       if (!response.ok || !result.success) {
         throw new Error(result.error || "Telegram send failed");
       }
-      setStep(4);
+      setStep(5);
     } catch (error) {
       console.error("Ошибка отправки:", error);
       setIsSending(false);
@@ -62,11 +60,11 @@ function App() {
   return (
     <main className="app-shell">
       <header className="topbar">
-        <span className="step-count">0{step} / 03</span>
+        <span className="step-count">0{Math.min(step, 4)} / 04</span>
       </header>
 
       <div className="progress">
-        <span style={{ width: `${(step / 3) * 100}%` }} />
+        <span style={{ width: `${(Math.min(step, 4) / 4) * 100}%` }} />
       </div>
 
       {step === 1 && (
@@ -130,7 +128,7 @@ function App() {
                 onClick={() => setActivity(item)}
               >
                 <span className={`activity-art ${item.color}`}>
-                  {item.icon}
+                  <img src={item.icon} alt={item.title} />
                 </span>
                 <span className="activity-copy">
                   <strong>{item.title}</strong>
@@ -145,13 +143,13 @@ function App() {
             type="button"
             onClick={() => setStep(3)}
           >
-            {buttonLabels.chooseDate} <span>→</span>
+            {buttonLabels.chooseLocation} <span>→</span>
           </button>
         </section>
       )}
 
       {step === 3 && (
-        <section className="screen date-screen">
+        <section className="screen city-screen">
           <button
             className="back-button"
             type="button"
@@ -160,10 +158,57 @@ function App() {
             ← {buttonLabels.back}
           </button>
           <p className="eyebrow">Step three</p>
-          <h1>Когда мне тебя украсть?</h1>
-          <p className="subtitle">
-            Календарь полностью твой, просто выбери время Х
-          </p>
+          <h1>Где погуляем?</h1>
+          <div className="city-grid">
+            {cities.map((item) => (
+              <label
+                className={`city-card ${item.id === city.id ? "selected" : ""}`}
+                key={item.id}
+              >
+                <input
+                  type="checkbox"
+                  checked={item.id === city.id}
+                  onChange={() => setCity(item)}
+                />
+                <img src={item.image} alt={item.title} />
+                <span className="city-copy">
+                  <strong>{item.title}</strong>
+                  <small>{item.detail}</small>
+                </span>
+                <span className="city-checkbox" aria-hidden="true">
+                  ✓
+                </span>
+              </label>
+            ))}
+          </div>
+          <button
+            className="button button-primary continue-button"
+            type="button"
+            onClick={() => setStep(4)}
+          >
+            Перейдем к дате <span>→</span>
+          </button>
+        </section>
+      )}
+
+      {step === 4 && (
+        <section className="screen date-screen">
+          <button
+            className="back-button"
+            type="button"
+            onClick={() => setStep(3)}
+          >
+            ← {buttonLabels.back}
+          </button>
+              <p className="eyebrow">Step four</p>
+          <div className="date-heading">
+              <h1>Когда мне тебя украсть?</h1>
+              <img
+                className="date-me-image"
+                src={dateMeImg}
+                alt="Date illustration"
+              />
+          </div>
           <div className="date-panel">
             <label>
               Выбери день
@@ -184,12 +229,14 @@ function App() {
             </label>
           </div>
           <div className="summary">
-            <span>{activity.icon}</span>
+            <img className="summary-image" src={activity.icon} alt="" />
             <div>
               <small>Наш план</small>
-              <strong>{activity.title}</strong>
+              <strong>
+                {activity.title} · {city.title}
+              </strong>
             </div>
-            <button type="button" onClick={() => setStep(2)}>
+            <button type="button" onClick={() => setStep(3)}>
               {buttonLabels.edit}
             </button>
           </div>
@@ -204,7 +251,7 @@ function App() {
         </section>
       )}
 
-      {step === 4 && (
+      {step === 5 && (
         <section className="screen success-screen">
           <div className="success-icon">♥</div>
           <h1>Класс. Теперь у нас есть план!</h1>
@@ -213,7 +260,9 @@ function App() {
           </p>
           <div className="last-summary">
             <div className="final-note">
-              <strong>{activity.title}</strong>
+              <strong>
+                {activity.title} · {city.title}
+              </strong>
               <span>
                 {date} at {time}
               </span>

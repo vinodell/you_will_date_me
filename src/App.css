@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 0 7vw 5vw;
   box-sizing: border-box;
-  background: rgba(255, 253, 248, .8);
+  background: rgba(255, 253, 248, 0.8);
 }
 
 .topbar {
@@ -14,7 +14,7 @@
   gap: 9px;
   color: var(--ink);
   font: 700 15px var(--sans);
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 .logo-mark {
@@ -39,7 +39,7 @@
   display: block;
   height: 100%;
   background: var(--coral);
-  transition: width .5s ease;
+  transition: width 0.5s ease;
 }
 
 .screen {
@@ -47,7 +47,7 @@
   margin: 0 auto;
   padding: clamp(55px, 8vw, 105px) 0 60px;
   text-align: center;
-  animation: appear .55s ease both;
+  animation: appear 0.55s ease both;
 }
 
 .eyebrow {
@@ -60,7 +60,7 @@
 
 h1 {
   color: var(--ink);
-  font: 700 clamp(42px, 6vw, 78px)/.98 var(--heading);
+  font: 700 clamp(42px, 6vw, 78px) / 0.98 var(--heading);
   letter-spacing: -3px;
   margin: 0 0 18px;
 }
@@ -71,6 +71,10 @@ h1 {
   color: var(--muted);
   font-size: 16px;
 }
+
+/* ---------------- */
+/* STEP 1           */
+/* ---------------- */
 
 .cat-wrap {
   position: relative;
@@ -87,7 +91,7 @@ h1 {
   border-radius: 50%;
   background: #f8d9c3;
   object-fit: cover;
-  filter: drop-shadow(0 15px 15px rgba(75, 45, 25, .14));
+  filter: drop-shadow(0 15px 15px rgba(75, 45, 25, 0.14));
   animation: bob 3s ease-in-out infinite;
 }
 
@@ -122,8 +126,12 @@ h1 {
   justify-content: space-evenly;
   gap: 13px;
   align-items: center;
-  min-height: 58px;
+  min-height: 190px;
 }
+
+/* ---------------- */
+/* BUTTONS          */
+/* ---------------- */
 
 .button {
   border: 0;
@@ -131,7 +139,10 @@ h1 {
   border-radius: 4px;
   padding: 16px 22px;
   font: 700 14px var(--sans);
-  transition: transform .2s, box-shadow .2s, background .2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
 }
 
 .button-primary {
@@ -145,22 +156,27 @@ h1 {
   box-shadow: 0 9px 0 #bf5a4e;
 }
 
+.button-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 #bf5a4e;
+}
+
 .button-ghost {
   color: var(--ink);
   background: transparent;
   border: 1px solid #d9d0c5;
 }
 
-.no-button {
-  transition: transform .25s ease;
+.button-ghost:hover {
+  background: rgba(247, 238, 229, 0.65);
 }
 
-.answer-zone {
-  min-height: 190px;
+.no-button {
+  transition: transform 0.25s ease;
 }
 
 .button:disabled {
-  opacity: .4;
+  opacity: 0.4;
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
@@ -179,11 +195,35 @@ h1 {
   color: var(--ink);
 }
 
+/* ---------------- */
+/* STEP 2           */
+/* ACTIVITY         */
+/* ---------------- */
+
+
+.activity-screen {
+  padding-top: clamp(36px, 5vw, 66px);
+  padding-bottom: 40px;
+}
+
+.activity-screen .back-button {
+  margin-bottom: 30px;
+}
+
+.activity-screen .eyebrow {
+  margin-bottom: 14px;
+}
+
+.activity-screen h1 {
+  margin-bottom: 0;
+}
+
 .activity-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin: 45px 0 34px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 90%;
+  margin: 28px auto 24px;
 }
 
 .activity-card {
@@ -191,25 +231,43 @@ h1 {
   text-align: left;
   border: 1px solid #e4dbd0;
   background: #fffdf9;
-  padding: 11px;
+  padding: 8px;
   cursor: pointer;
   border-radius: 5px;
-  transition: transform .2s, border-color .2s, box-shadow .2s;
+
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .activity-card:hover,
 .activity-card.selected {
   border-color: var(--coral);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(91, 57, 36, .1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(91, 57, 36, 0.1);
 }
 
 .activity-art {
-  display: grid;
-  place-items: center;
-  height: 130px;
-  font-size: 60px;
-  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: clamp(150px, 17vw, 350px);
+
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.activity-art img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
 }
 
 .peach {
@@ -227,24 +285,24 @@ h1 {
 .activity-copy {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 0 5px 7px;
+  gap: 3px;
+  padding: 0 5px 5px;
 }
 
 .activity-copy strong {
   color: var(--ink);
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .activity-copy small {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .radio-dot {
   position: absolute;
-  right: 16px;
-  bottom: 17px;
+  right: 14px;
+  bottom: 14px;
   width: 11px;
   height: 11px;
   border: 1px solid #bdb2a5;
@@ -266,6 +324,104 @@ h1 {
   font-size: 18px;
 }
 
+/* ---------------- */
+/* STEP 3           */
+/* CITY             */
+/* ---------------- */
+
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 45px 0 34px;
+}
+
+.city-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid #e4dbd0;
+  border-radius: 5px;
+  background: #fffdf9;
+  cursor: pointer;
+  text-align: left;
+
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.city-card:hover,
+.city-card.selected {
+  border-color: var(--coral);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(91, 57, 36, 0.1);
+}
+
+.city-card input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.city-card img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.city-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 15px 16px 17px;
+}
+
+.city-copy strong {
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.city-copy small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.city-checkbox {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  display: grid;
+  place-items: center;
+
+  width: 25px;
+  height: 25px;
+
+  border: 1px solid white;
+  border-radius: 50%;
+
+  color: transparent;
+  background: rgba(255, 253, 249, 0.85);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.city-card.selected .city-checkbox {
+  border-color: var(--coral);
+  color: white;
+  background: var(--coral);
+}
+
+/* ---------------- */
+/* STEP 4           */
+/* DATE             */
+/* ---------------- */
+
 .date-panel {
   display: flex;
   gap: 14px;
@@ -282,16 +438,46 @@ h1 {
   letter-spacing: 1px;
 }
 
+.date-heading {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.date-me-wrap {
+  position: relative;
+  width: 260px;
+  height: 210px;
+  margin: 28px auto 18px;
+  display: grid;
+  place-items: center;
+}
+
+.date-me-image {
+  width: 166px;
+  height: 166px;
+  border-radius: 50%;
+  background: #f8d9c3;
+  object-fit: cover;
+  display: block;
+  filter: drop-shadow(0 15px 15px rgba(75, 45, 25, 0.14));
+}
+
 .date-panel input {
   display: block;
   width: 100%;
   margin-top: 9px;
   padding: 15px 12px;
   box-sizing: border-box;
+
   color: var(--ink);
   background: #fffdf9;
+
   border: 1px solid #d9d0c5;
   border-radius: 4px;
+
   font: 15px var(--sans);
 }
 
@@ -299,15 +485,20 @@ h1 {
   display: flex;
   align-items: center;
   gap: 13px;
+
   max-width: 530px;
   margin: 0 auto 28px;
   padding: 14px;
+
   background: #f7eee5;
   text-align: left;
 }
 
-.summary>span {
-  font-size: 25px;
+.summary-image {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  object-fit: cover;
 }
 
 .summary div {
@@ -335,6 +526,11 @@ h1 {
   font: 700 12px var(--sans);
 }
 
+/* ---------------- */
+/* STEP 5           */
+/* SUCCESS          */
+/* ---------------- */
+
 .success-screen {
   padding-top: 14vh;
 }
@@ -342,22 +538,34 @@ h1 {
 .success-icon {
   display: grid;
   place-items: center;
+
   width: 88px;
   height: 88px;
+
   margin: 0 auto 31px;
+
   border-radius: 50%;
   background: #f8d5bf;
   color: var(--coral);
+
   font-size: 42px;
-  animation: pop .6s ease both;
+
+  animation: pop 0.6s ease both;
+}
+
+.last-summary {
+  display: flex;
+  flex-direction: column;
 }
 
 .final-note {
   display: inline-flex;
   flex-direction: column;
   gap: 5px;
+
   margin: 40px auto;
   padding: 17px 32px;
+
   color: var(--ink);
   background: #f7eee5;
 }
@@ -366,6 +574,10 @@ h1 {
   color: var(--muted);
   font-size: 13px;
 }
+
+/* ---------------- */
+/* ANIMATIONS       */
+/* ---------------- */
 
 @keyframes appear {
   from {
@@ -387,7 +599,7 @@ h1 {
 
 @keyframes pop {
   from {
-    transform: scale(.6);
+    transform: scale(0.6);
     opacity: 0;
   }
 
@@ -396,6 +608,10 @@ h1 {
     opacity: 1;
   }
 }
+
+/* ---------------- */
+/* MOBILE           */
+/* ---------------- */
 
 @media (max-width: 650px) {
   .app-shell {
@@ -418,35 +634,6 @@ h1 {
     padding-top: 58px;
   }
 
-  .activity-grid {
-    grid-template-columns: 1fr;
-    margin-top: 32px;
-  }
-
-  .activity-card {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-  }
-
-  .activity-art {
-    width: 84px;
-    height: 84px;
-    margin: 0;
-    font-size: 40px;
-    flex: 0 0 auto;
-  }
-
-  .radio-dot {
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-  }
-
-  .activity-copy {
-    padding: 0;
-  }
-
   .back-button {
     margin-bottom: 42px;
   }
@@ -455,13 +642,69 @@ h1 {
     min-height: 165px;
   }
 
+  .activity-screen {
+    padding-top: 38px;
+  }
+
+  .activity-screen .back-button {
+    margin-bottom: 28px;
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+
+    width: 100%;
+    margin: 26px 0 24px;
+
+    gap: 10px;
+  }
+
+  .activity-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 8px;
+  }
+
+  .activity-art {
+    width: 76px;
+    height: 76px;
+
+    margin: 0;
+
+    flex: 0 0 76px;
+  }
+
+  .activity-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .activity-copy {
+    padding: 0;
+    padding-right: 28px;
+  }
+
+  .radio-dot {
+    top: 50%;
+    right: 14px;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  .city-grid {
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+  }
+
+  .city-card img {
+    height: 155px;
+  }
+
   .date-panel {
     flex-direction: column;
     margin-top: 32px;
   }
-}
-
-.last-summary {
-    display: flex;
-    flex-direction: column;
 }

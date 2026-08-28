@@ -33,8 +33,8 @@ export default {
 			return jsonResponse({ success: false, error: 'Method not allowed' }, 405, corsHeaders);
 		}
 		try {
-			const { activity, details, date, time } = await request.json();
-			if (!activity || !date || !time) {
+			const { activity, details, date, time, city } = await request.json();
+			if (!activity || !date || !time || !city) {
 				return jsonResponse({ success: false, error: 'Missing required fields' }, 400, corsHeaders);
 			}
 			const text = [
@@ -45,6 +45,7 @@ export default {
 				'',
 				`📅 Дата: ${date}`,
 				`⏰ Время: ${time}`,
+				`📍 Город: ${city}`,
 			].join('\n');
 			const telegramResponse = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
 				method: 'POST',
