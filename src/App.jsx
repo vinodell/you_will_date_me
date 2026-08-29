@@ -60,11 +60,11 @@ function App() {
   return (
     <main className="app-shell">
       <header className="topbar">
-        <span className="step-count">0{Math.min(step, 4)} / 04</span>
+        <span className="step-count">0{Math.min(step, 5)} / 05</span>
       </header>
 
       <div className="progress">
-        <span style={{ width: `${(Math.min(step, 4) / 4) * 100}%` }} />
+        <span style={{ width: `${(Math.min(step, 5) / 5) * 100}%` }} />
       </div>
 
       {step === 1 && (
