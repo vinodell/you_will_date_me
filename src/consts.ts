@@ -2,8 +2,9 @@ import dateTableImage from "./assets/datetable.jpg";
 import moscowImage from "./assets/moscow.JPG";
 import saintPetersburgImage from "./assets/saintp_2.jpg";
 import walkingImage from "./assets/walking.jpg";
+import type { Activity, City } from "./features/date-invitation/types";
 
-export const activities = [
+export const activities: readonly Activity[] = [
   {
     id: "restaurant",
     title: "Покушать",
@@ -20,7 +21,7 @@ export const activities = [
   },
 ];
 
-export const cities = [
+export const cities: readonly City[] = [
   {
     id: "moscow",
     title: "Москва",
@@ -35,13 +36,10 @@ export const cities = [
 
 export const buttonLabels = {
   yes: "Да, конечно!",
-  no: "Неет",
-  chooseDate: "Перейдем к дате",
-  edit: "Изменить",
   back: "Назад",
+  edit: "Изменить",
   startOver: "Начать заново",
-  chooseLocation: "Выбрать локацию"
-};
+  chooseLocation: "Выбрать локацию",
+} as const;
 
 export const telegramApi = "https://worker.max-khamitov.workers.dev/send-date";
-export const WEB_ACCESS_KEY = import.meta.env.VITE_WEB_ACCESS_KEY;
