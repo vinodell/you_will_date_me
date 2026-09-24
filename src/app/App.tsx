@@ -1,8 +1,18 @@
 import { useState } from "react";
-import { sendDateInvitation } from "../features/date-invitation/api/sendDate";
 import { activities, cities } from "../consts";
-import { ActivityStep, CityStep, DateStep, QuestionStep, SuccessStep, ProgressHeader } from "../features/date-invitation/components";
-import type { Activity, City, InvitationStep } from "../features/date-invitation/types";
+import {
+  ActivityStep,
+  CityStep,
+  DateStep,
+  QuestionStep,
+  SuccessStep,
+  ProgressHeader,
+  Activity,
+  City,
+  InvitationStep,
+  sendDateInvitation,
+} from "../features/date-invitation";
+
 import "../App.css";
 
 function App() {
@@ -80,7 +90,13 @@ function App() {
         />
       )}
       {step === 5 && (
-        <SuccessStep activity={activity} city={city} date={date} time={time} onStartOver={resetInvitation} />
+        <SuccessStep
+          activity={activity}
+          city={city}
+          date={date}
+          time={time}
+          onStartOver={resetInvitation}
+        />
       )}
     </main>
   );
