@@ -42,7 +42,11 @@ export function ActivityStep({
           </button>
         ))}
       </div>
-      <button className="button button-primary continue-button" type="button" onClick={onContinue}>
+      <button
+        className="button button-primary continue-button"
+        type="button"
+        onClick={onContinue}
+      >
         {buttonLabels.chooseLocation} <span>→</span>
       </button>
     </section>

@@ -40,28 +40,54 @@ export function DateStep({
       <p className="eyebrow">Step four</p>
       <div className="date-heading">
         <h1>Когда мне тебя украсть?</h1>
-        <img className="date-me-image" src={dateMeImg} alt="Date illustration" />
+        <img
+          className="date-me-image"
+          src={dateMeImg}
+          alt="Date illustration"
+        />
       </div>
       <div className="date-panel">
         <label>
           Выбери день
-          <input type="date" value={date} min={minDate} onChange={(event) => onDateChange(event.target.value)} />
+          <input
+            type="date"
+            value={date}
+            min={minDate}
+            onChange={(event) => onDateChange(event.target.value)}
+          />
         </label>
         <label>
           Выбери время
-          <input type="time" value={time} onChange={(event) => onTimeChange(event.target.value)} />
+          <input
+            type="time"
+            value={time}
+            onChange={(event) => onTimeChange(event.target.value)}
+          />
         </label>
       </div>
       <div className="summary">
         <img className="summary-image" src={activity.icon} alt="" />
         <div>
           <small>Наш план</small>
-          <strong>{activity.title} · {city.title}</strong>
+          <strong>
+            {activity.title} · {city.title}
+          </strong>
         </div>
-        <button type="button" onClick={onEditCity}>{buttonLabels.edit}</button>
+        <button type="button" onClick={onEditCity}>
+          {buttonLabels.edit}
+        </button>
       </div>
-      {errorMessage && <p role="alert" className="form-error">{errorMessage}</p>}
-      <button className="button button-primary continue-button" type="button" disabled={!isReady || isSending} onClick={onSubmit}>
+      {errorMessage && (
+        <p role="alert" className="form-error">
+          {errorMessage}
+        </p>
+      )}
+      <button
+        className="button button-primary continue-button"
+        type="button"
+        disabled={!isReady || isSending}
+        onClick={onSubmit}
+      >
         {isSending ? "Отправляем..." : "Make it official"} <span>♥</span>
       </button>
     </section>

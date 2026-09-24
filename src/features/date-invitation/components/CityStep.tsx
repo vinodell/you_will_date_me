@@ -9,7 +9,13 @@ interface CityStepProps {
   readonly onContinue: () => void;
 }
 
-export function CityStep({ cities, selectedCity, onSelect, onBack, onContinue }: CityStepProps) {
+export function CityStep({
+  cities,
+  selectedCity,
+  onSelect,
+  onBack,
+  onContinue,
+}: CityStepProps) {
   return (
     <section className="screen city-screen">
       <button className="back-button" type="button" onClick={onBack}>
@@ -19,7 +25,10 @@ export function CityStep({ cities, selectedCity, onSelect, onBack, onContinue }:
       <h1>Где погуляем?</h1>
       <div className="city-grid">
         {cities.map((city) => (
-          <label className={`city-card ${city.id === selectedCity.id ? "selected" : ""}`} key={city.id}>
+          <label
+            className={`city-card ${city.id === selectedCity.id ? "selected" : ""}`}
+            key={city.id}
+          >
             <input
               type="radio"
               name="city"
@@ -31,11 +40,17 @@ export function CityStep({ cities, selectedCity, onSelect, onBack, onContinue }:
               <strong>{city.title}</strong>
               {city.detail && <small>{city.detail}</small>}
             </span>
-            <span className="city-checkbox" aria-hidden="true">✓</span>
+            <span className="city-checkbox" aria-hidden="true">
+              ✓
+            </span>
           </label>
         ))}
       </div>
-      <button className="button button-primary continue-button" type="button" onClick={onContinue}>
+      <button
+        className="button button-primary continue-button"
+        type="button"
+        onClick={onContinue}
+      >
         Перейдем к дате <span>→</span>
       </button>
     </section>

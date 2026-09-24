@@ -30,12 +30,18 @@ export function QuestionStep({ onAccept }: QuestionStepProps) {
         <span className="cat-heart">♥</span>
       </div>
       <div className="answer-zone">
-        <button className="button button-primary" type="button" onClick={onAccept}>
+        <button
+          className="button button-primary"
+          type="button"
+          onClick={onAccept}
+        >
           {buttonLabels.yes}
         </button>
         <button
           className="button button-ghost no-button"
-          style={{ transform: `translate(${noPosition.x}px, ${noPosition.y}px)` }}
+          style={{
+            transform: `translate(${noPosition.x}px, ${noPosition.y}px)`,
+          }}
           type="button"
           onMouseEnter={() => {
             setIsNoButtonHovered(true);
