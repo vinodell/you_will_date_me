@@ -85,7 +85,6 @@ function App() {
           onDateChange={setDate}
           onTimeChange={setTime}
           onBack={() => setStep(3)}
-          onEditCity={() => setStep(3)}
           onSubmit={handleSubmit}
         />
       )}

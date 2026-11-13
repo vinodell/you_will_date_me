@@ -26,7 +26,16 @@ export function QuestionStep({ onAccept }: QuestionStepProps) {
       <div className="cat-wrap" aria-label="A cute cat waiting for your answer">
         <span className="spark spark-one">✦</span>
         <span className="spark spark-two">✧</span>
-        <img className="cat" src={isNoButtonHovered ? noGif : catGif} alt="" />
+        <img
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          width={166}
+          height={166}
+          className="cat"
+          src={isNoButtonHovered ? noGif : catGif}
+          alt=""
+        />
         <span className="cat-heart">♥</span>
       </div>
       <div className="answer-zone">

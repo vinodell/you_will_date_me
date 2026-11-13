@@ -35,10 +35,14 @@ export function CityStep({
               checked={city.id === selectedCity.id}
               onChange={() => onSelect(city)}
             />
-            <img src={city.image} alt={city.title} />
+            <img
+              loading="lazy"
+              decoding="async"
+              src={city.image}
+              alt={city.title}
+            />
             <span className="city-copy">
               <strong>{city.title}</strong>
-              {city.detail && <small>{city.detail}</small>}
             </span>
             <span className="city-checkbox" aria-hidden="true">
               ✓

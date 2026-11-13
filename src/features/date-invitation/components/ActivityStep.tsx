@@ -32,7 +32,12 @@ export function ActivityStep({
             onClick={() => onSelect(activity)}
           >
             <span className={`activity-art ${activity.color}`}>
-              <img src={activity.icon} alt={activity.title} />
+              <img
+                loading="lazy"
+                decoding="async"
+                src={activity.icon}
+                alt={activity.title}
+              />
             </span>
             <span className="activity-copy">
               <strong>{activity.title}</strong>

@@ -9,7 +9,6 @@ export interface Activity {
 export interface City {
   readonly id: string;
   readonly title: string;
-  readonly detail?: string;
   readonly image: string;
 }
 

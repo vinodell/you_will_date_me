@@ -12,7 +12,6 @@ interface DateStepProps {
   readonly onDateChange: (date: string) => void;
   readonly onTimeChange: (time: string) => void;
   readonly onBack: () => void;
-  readonly onEditCity: () => void;
   readonly onSubmit: () => void;
 }
 
@@ -26,7 +25,6 @@ export function DateStep({
   onDateChange,
   onTimeChange,
   onBack,
-  onEditCity,
   onSubmit,
 }: DateStepProps) {
   const minDate = new Date().toISOString().split('T')[0];
@@ -41,6 +39,8 @@ export function DateStep({
       <div className="date-heading">
         <h1>Когда мне тебя украсть?</h1>
         <img
+          loading="lazy"
+          decoding="async"
           className="date-me-image"
           src={dateMeImg}
           alt="Date illustration"
@@ -66,14 +66,20 @@ export function DateStep({
         </label>
       </div>
       <div className="summary">
-        <img className="summary-image" src={activity.icon} alt="" />
+        <img
+          loading="lazy"
+          decoding="async"
+          className="summary-image"
+          src={activity.icon}
+          alt=""
+        />
         <div>
           <small>Наш план</small>
           <strong>
             {activity.title} · {city.title}
           </strong>
         </div>
-        <button type="button" onClick={onEditCity}>
+        <button type="button" onClick={onBack}>
           {buttonLabels.edit}
         </button>
       </div>
