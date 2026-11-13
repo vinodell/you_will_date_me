@@ -1,5 +1,5 @@
-import type { Activity, City } from "../types";
-import { buttonLabels } from "../../../consts";
+import type { Activity, City } from '../types';
+import { buttonLabels } from '../../../consts';
 
 interface SuccessStepProps {
   readonly activity: Activity;

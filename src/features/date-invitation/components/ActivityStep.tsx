@@ -1,5 +1,5 @@
-import type { Activity } from "../types";
-import { buttonLabels } from "../../../consts";
+import type { Activity } from '../types';
+import { buttonLabels } from '../../../consts';
 
 interface ActivityStepProps {
   readonly activities: readonly Activity[];
@@ -26,7 +26,7 @@ export function ActivityStep({
       <div className="activity-grid">
         {activities.map((activity) => (
           <button
-            className={`activity-card ${activity.id === selectedActivity.id ? "selected" : ""}`}
+            className={`activity-card ${activity.id === selectedActivity.id ? 'selected' : ''}`}
             type="button"
             key={activity.id}
             onClick={() => onSelect(activity)}

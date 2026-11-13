@@ -1,7 +1,7 @@
-import { useState } from "react";
-import catGif from "../../../assets/cat.gif";
-import noGif from "../../../assets/noBtn.png";
-import { buttonLabels } from "../../../consts";
+import { useState } from 'react';
+import catGif from '../../../assets/cat.gif';
+import noGif from '../../../assets/noBtn.png';
+import { buttonLabels } from '../../../consts';
 
 interface QuestionStepProps {
   readonly onAccept: () => void;

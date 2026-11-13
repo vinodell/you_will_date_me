@@ -1,5 +1,5 @@
-import type { City } from "../types";
-import { buttonLabels } from "../../../consts";
+import type { City } from '../types';
+import { buttonLabels } from '../../../consts';
 
 interface CityStepProps {
   readonly cities: readonly City[];
@@ -26,7 +26,7 @@ export function CityStep({
       <div className="city-grid">
         {cities.map((city) => (
           <label
-            className={`city-card ${city.id === selectedCity.id ? "selected" : ""}`}
+            className={`city-card ${city.id === selectedCity.id ? 'selected' : ''}`}
             key={city.id}
           >
             <input

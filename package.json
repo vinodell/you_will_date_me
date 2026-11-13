@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "eslint . && prettier --check \"**/*.{js,jsx,mjs,ts,tsx,json,md}\"",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fix": "eslint . --fix && prettier --write \"**/*.{js,jsx,mjs,ts,tsx,json,md}\"",
+    "test": "node --test worker/test/*.test.js"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -22,9 +24,11 @@
     "@typescript-eslint/parser": "^8.70.0",
     "@vitejs/plugin-react": "^6.0.4",
     "eslint": "^10.8.0",
+    "eslint-config-metarhia": "^10.0.1",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.7.0",
+    "prettier": "^3.10.1",
     "typescript": "^5.9.3",
     "vite": "^8.2.0"
   }

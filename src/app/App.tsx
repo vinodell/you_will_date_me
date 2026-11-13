@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { activities, cities } from "../consts";
+import { useState } from 'react';
+import { activities, cities } from '../consts';
 import {
   ActivityStep,
   CityStep,
@@ -11,15 +11,15 @@ import {
   City,
   InvitationStep,
   sendDateInvitation,
-} from "../features/date-invitation";
+} from '../features/date-invitation';
 
-import "../App.css";
+import '../App.css';
 
 function App() {
   const [activity, setActivity] = useState<Activity>(activities[1]);
   const [city, setCity] = useState<City>(cities[0]);
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
   const [step, setStep] = useState<InvitationStep>(1);
   const [isSending, setIsSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -40,8 +40,8 @@ function App() {
       });
       setStep(5);
     } catch (error) {
-      console.error("Ошибка отправки:", error);
-      setErrorMessage("Не удалось отправить приглашение. Попробуй еще раз.");
+      console.error('Ошибка отправки:', error);
+      setErrorMessage('Не удалось отправить приглашение. Попробуй еще раз.');
     } finally {
       setIsSending(false);
     }

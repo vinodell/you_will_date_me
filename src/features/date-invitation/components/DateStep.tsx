@@ -1,6 +1,6 @@
-import dateMeImg from "../../../assets/date_me.jpg";
-import type { Activity, City } from "../types";
-import { buttonLabels } from "../../../consts";
+import dateMeImg from '../../../assets/date_me.jpg';
+import type { Activity, City } from '../types';
+import { buttonLabels } from '../../../consts';
 
 interface DateStepProps {
   readonly activity: Activity;
@@ -29,7 +29,7 @@ export function DateStep({
   onEditCity,
   onSubmit,
 }: DateStepProps) {
-  const minDate = new Date().toISOString().split("T")[0];
+  const minDate = new Date().toISOString().split('T')[0];
   const isReady = Boolean(date && time);
 
   return (
@@ -88,7 +88,7 @@ export function DateStep({
         disabled={!isReady || isSending}
         onClick={onSubmit}
       >
-        {isSending ? "Отправляем..." : "Make it official"} <span>♥</span>
+        {isSending ? 'Отправляем...' : 'Make it official'} <span>♥</span>
       </button>
     </section>
   );

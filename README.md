@@ -6,9 +6,9 @@ A small dating web application built with **React + Vite** and deployed on **Clo
 
 Before starting, make sure you have:
 
-* Node.js 20+
-* A Cloudflare account
-* Wrangler CLI
+- Node.js 20+
+- A Cloudflare account
+- Wrangler CLI
 
 ## Local Development
 
@@ -126,7 +126,6 @@ Create a Cloudflare API token with permission to deploy Workers and add it as `C
 The Cloudflare Account ID can be found in the Cloudflare dashboard.
 
 Once configured, pushes to the deployment branch can automatically build and deploy the application.
-
 
 ## Development Workflow
 

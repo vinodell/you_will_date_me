@@ -1,22 +1,24 @@
 function getCorsHeaders(request) {
 	const origin = request.headers.get('Origin');
 
-	const headers = {
+	const headers = new Headers({
 		'Access-Control-Allow-Methods': 'POST, OPTIONS',
 		'Access-Control-Allow-Headers': 'Content-Type',
 		'Access-Control-Max-Age': '86400',
 		Vary: 'Origin',
-	};
+	});
 
 	if (isAllowedOrigin(origin)) {
-		headers['Access-Control-Allow-Origin'] = origin;
+		headers.set('Access-Control-Allow-Origin', origin);
 	}
 
 	return headers;
 }
 
 function jsonResponse(data, status, corsHeaders) {
-	return new Response(JSON.stringify(data), { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+	const headers = new Headers(corsHeaders);
+	headers.set('Content-Type', 'application/json');
+	return new Response(JSON.stringify(data), { status, headers });
 }
 
 export default {

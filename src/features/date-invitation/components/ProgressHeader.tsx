@@ -1,4 +1,4 @@
-import type { InvitationStep } from "../types";
+import type { InvitationStep } from '../types';
 
 interface ProgressHeaderProps {
   readonly step: InvitationStep;
